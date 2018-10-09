@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {auth} from '../firebase';
 
 const propertyName=(propertyName, value) => ({
     [propertyName]: value
@@ -14,6 +15,12 @@ export default class SignIn extends Component {
     }
     onSignIn =(e) => {
         e.preventDefault()
+        const {email, password} = this.state;
+        auth.signInWithEmailAndPassword(email, password)
+            .then(user => console.log(user))
+
+
+
     }
 
     render() {
