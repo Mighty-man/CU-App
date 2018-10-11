@@ -36,18 +36,18 @@ export default class Register extends Component {
             areaOfStudy
         }= this.state
         
-        // const newStudent = {
-        //     firstname,
-        //     middlename,
-        //     lastname,
-        //     email,
-        //     phoneNumber,
-        //     county,
-        //     password,
-        //     cpassword,
-        //     areaOfStudy
-        // }
-        // console.log(newStudent)
+        const newStudent = {
+            firstname,
+            middlename,
+            lastname,
+            email,
+            phoneNumber,
+            county,
+            password,
+            cpassword,
+            areaOfStudy
+        }
+        console.log(newStudent)
 
         auth.createUserWithEmailAndPassword(email, password)
             .then(user => {
@@ -66,7 +66,7 @@ export default class Register extends Component {
                 }
 
                 const userId=user.uid;
-                fetch('http://localhost:3000/api/v1/students', {
+                fetch('https://cu-app.herokuapp.com/api/v1/students', {
                     method: 'POST',
                     headers: {
                         "Content-Type": 'application/json'
@@ -146,7 +146,7 @@ export default class Register extends Component {
                         </div>
 
                         <div className='form-group' >
-                        County Of Origen:
+                        County Of Origin:
                         <input 
                         onChange = {event =>this.setState(propertyName('county',event.target.value))}
                         value={this.state.county}
