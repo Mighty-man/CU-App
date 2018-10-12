@@ -7,7 +7,7 @@ export default class Welcome extends Component {
     render() {
         return (
             <div style={styles.page} className= 'reg'>
-                <h1 className='head' style={ styles.header} >Welcome To The CU Entrance Registration Portal</h1>
+                <h1 className='head' style={ styles.header} >Welcome To Cuttington University Entrance Registration Portal</h1>
                 <div className="card border-primary mb-3" style={{
                     maxWidth: "40rem",
                     marginLeft: 'auto',
@@ -15,7 +15,7 @@ export default class Welcome extends Component {
                     display: 'block',
                     
                 }}>
-                <div className="card-header"><h4>Follow The Step Below To Register For The CU Entrance!</h4></div>
+                <div className="card-header"><h4>Follow The Steps Below To Register For The CU Entrance!</h4></div>
                 
                  <div class="alert alert-dismissible alert-success">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -30,7 +30,7 @@ export default class Welcome extends Component {
                         <div class="card-header"><h2>Step 1.</h2>
                         <div class="card-body">
                             <h4 class="card-title">Bank payment</h4>
-                            <p class="card-text">All payment are to be made at the Bank in your area.</p>
+                            <p class="card-text">All payments are to be made at the Bank in your area.</p>
                         </div>
                     </div>
                 </div>
@@ -43,8 +43,8 @@ export default class Welcome extends Component {
                          <div class="card-header"><h2>Step 2.</h2></div>
                             <h4 class="card-title">Choose your Bank</h4>
                             <p class="card-text">Cuttington University Deals With Two Major Banking System. </p>
-                            <p>For UBA Bank account: 53070030000266</p>
-                            <p>For Ecobank account: 0011014700269602</p>
+                            <p>UBA Bank account: 53070030000266</p>
+                            <p>Ecobank account: 0011014700269602</p>
                             <img src={Bank} style={{width: "10rem"}}/>
                             <img src={Bank2} style={{width: "10rem"}}/>
 
@@ -68,13 +68,13 @@ export default class Welcome extends Component {
                         <div class="card-header"><h2>Stept 3.</h2></div>
                         <div class="card text-white bg-warning mb-3"></div>
                             <h4 class="card-title">Obtain Cuttington University Official Reciept</h4>
-                            <p class="card-text">After Paying the money to the bank, Please take the Bank slip to the 
-                            Finance offiec on the Main campus to obtain the CU official Reciept.</p>
+                            <p class="card-text">After Payment to bank, Please take the Bank slip to the 
+                            Finance office on the Main campus to obtain the CU official Reciept.</p>
                 </div>  
                        
                         <div class="alert alert-dismissible alert-success">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Thanks So far!!!</strong> You successfully read <a href="#" class="alert-link">At this point You are few stept towards being part of Cuttington Student!!!</a>.
+                    <strong>Thanks So far!!!</strong> You successfully read <a href="#" class="alert-link">At this point You are few steps towards being part of Cuttington!!!</a>.
                     </div>
 
 
@@ -83,7 +83,7 @@ export default class Welcome extends Component {
                         <div class="card-text-white">
                             <h4 class="card-title">Return to the Portal!!</h4>
                             <p class="card-text">After you obtain the official Cuttington University Reciept,
-                             you will need to scand the copy of the Reciept to the Upload section of this page</p>
+                             you will need to scan the copy of the Reciept to the Upload section on this page</p>
                         </div>
                         </div>
 

@@ -4,7 +4,7 @@ export default class Register extends Component {
     render() {
         return (
             <div style={styles.page} className= 'reg'>
-                <h1 className='head' style={ styles.header} >Welcome To The CU Entrance Registration Portal</h1>
+                <h1 className='head' style={ styles.header} >Welcome To Cuttington University Entrance Registration Portal</h1>
                 <div className="card border-primary mb-3" style={{
                     maxWidth: "40rem",
                     marginLeft: 'auto',
@@ -45,7 +45,7 @@ export default class Register extends Component {
                         </div>
 
                         <div className='form-group' >
-                        Creat Password
+                        Create Password
                         <input className='form-control'type="password" name="password" value=""/>
                         </div>
 
