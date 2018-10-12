@@ -1,7 +1,94 @@
 import React, { Component } from 'react';
+import {auth} from '../firebase'
+
+const propertyName=(propertyName, value) => ({
+[propertyName]:value
+})
 
 export default class Register extends Component {
+    constructor(){
+        super()
+        this.state= {
+            firstname: '',
+            middlename :'',
+            lastname :'',
+            email: '',
+            phoneNumber: '',
+            county: '',
+            password: '',
+            cpassword: '',
+            areaOfStudy: '',
+            
+        }
+    }
+
+    onSubmit = (event) => {
+        event.preventDefault()
+        const {
+            firstname,
+            middlename,
+            lastname,
+            email,
+            phoneNumber,
+            county,
+            password,
+            cpassword,
+            areaOfStudy
+        }= this.state
+        
+        const newStudent = {
+            firstname,
+            middlename,
+            lastname,
+            email,
+            phoneNumber,
+            county,
+            password,
+            cpassword,
+            areaOfStudy
+        }
+        console.log(newStudent)
+
+        auth.createUserWithEmailAndPassword(email, password)
+            .then(user => {
+
+                const newStudent = {
+                    firstname,
+                    middlename,
+                    lastname,
+                    email,
+                    phoneNumber,
+                    county,
+                    password,
+                    cpassword,
+                    areaOfStudy,
+                    _id: user.uid
+                }
+
+                const userId=user.uid;
+                fetch('https://cu-app.herokuapp.com/api/v1/students', {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": 'application/json'
+                    },
+                    body: JSON.stringify(newStudent)
+                })
+                .then(res => res.json)
+            })
+
+
+        if (password !==cpassword){
+             
+            throw console.error('passwords do not match');
+            
+        }
+    }
+
     render() {
+        const { password, cpassword, firstname, email} = this.state;
+        const isInvalid =
+        password !== cpassword ||
+        password === '';
         return (
             <div style={styles.page} className= 'reg'>
                 <h1 className='head' style={ styles.header} >Welcome To Cuttington University Entrance Registration Portal</h1>
@@ -14,50 +101,86 @@ export default class Register extends Component {
                 }}>
                 <div className="card-header"><h4>Register</h4></div>
                 <div className="card-body">
-                    <form  className= 'form'>
+                    <form
+                    onSubmit={this.onSubmit}
+                    className= 'form'>
                         <div className='form-group' >
                         First name:
-                        <input className='form-control' type="text" name="firstname" value=""/>
+                        <input 
+                        onChange = {event =>this.setState(propertyName('firstname',event.target.value))}
+                        value={this.state.firstname}
+                        className='form-control' 
+                        type="text" name="firstname"/>
                         </div>
                         
                         <div className='form-group' >
                         Middle Name:
-                        <input className='form-control' type="text" name="middlename" value=""/>
+                        <input
+                        onChange = {event =>this.setState(propertyName('middlename',event.target.value))}
+                        value={this.state.middlename} 
+                        className='form-control' 
+                        type="text" name="middlename"/>
                         </div>
                         <div className='form-group' >
                         Last name:
-                        <input className='form-control' type="text" name="lastname" value=""/>
+                        <input 
+                        onChange = {event =>this.setState(propertyName('lastname',event.target.value))}
+                        value={this.state.lastname}
+                        className='form-control' type="text" name="lastname"/>
                         </div>
 
                         <div className='form-group' >
                         Email:
-                        <input className='form-control' type="text" name="email" value="youremail@dominname.com"/>
+                        <input 
+                        onChange = {event =>this.setState(propertyName('email',event.target.value))}
+                        value={this.state.email}
+                        className='form-control' type="text" name="email"/>
                         </div>
 
                         <div className='form-group' >
                         Phone Number:
-                        <input className='form-control'type="number" name="phoneNumber" value="+231..."/>
+                        <input 
+                        onChange = {event =>this.setState(propertyName('phoneNumber',event.target.value))}
+                        value={this.state.phoneNumber}
+                        className='form-control'type="number" name="phoneNumber"/>
                         </div>
 
                         <div className='form-group' >
-                        County Of Origen:
-                        <input className='form-control' type="text" name="county" value="County"/>
+                        County Of Origin:
+                        <input 
+                        onChange = {event =>this.setState(propertyName('county',event.target.value))}
+                        value={this.state.county}
+                        className='form-control' type="text" name="county"/>
+                        </div>
+
+                         <div className='form-group' >
+                        Area of Study:
+                        <input 
+                        onChange = {event =>this.setState(propertyName('areaOfStudy',event.target.value))}
+                        value={this.state.areaOfStudy}
+                        className='form-control' type="text" name="areaOfStudy"/>
                         </div>
 
                         <div className='form-group' >
                         Create Password
-                        <input className='form-control'type="password" name="password" value=""/>
+                        <input 
+                        onChange = {event =>this.setState(propertyName('password',event.target.value))}
+                        value={this.state.password}
+                        className='form-control'type="password" name="password"/>
                         </div>
 
                         <div className='form-group' >
                         Comfrim Password:
-                        <input className='form-control' type="password" name="password" value=""/>
+                        <input 
+                        onChange = {event =>this.setState(propertyName('cpassword',event.target.value))}
+                        value={this.state.cpassword}
+                        className='form-control' type="password" name="cpassword"/>
                         </div>
                         
                         <div className='form-group' >
                         <input className='btn btn-primary' style={{
                             width:'100%',
-                            }} type="submit" value="Sign UP"/>
+                            }} type="submit" disabled={isInvalid} value="Sign UP"/>
                         </div>
                  </form>
                 </div>

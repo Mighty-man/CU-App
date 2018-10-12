@@ -5,6 +5,8 @@ import Welcome from './components/Welcome';
 import Register from './components/Register';
 import SignIn from './components/SignIn';
 import PaymentProcess from './components/PaymentProcess';
+import Time from './components/Time';
+
 
 
 class App extends Component{
@@ -16,6 +18,7 @@ class App extends Component{
       <Route path='/Register' component={Register}/>
       <Route path='/SignIn' component={SignIn}/>
       <Route path='/PaymentProcess' component={PaymentProcess}/>
+      <Route path='/Time' component={Time}/>
     </Switch>
   </div>
 
