@@ -7,6 +7,7 @@ import SignIn from './components/SignIn';
 import PaymentProcess from './components/PaymentProcess';
 import Time from './components/Time';
 import Instructions from './components/Instructions';
+import Test from './components/Test';
 
 
 
@@ -21,6 +22,7 @@ class App extends Component{
       <Route path='/PaymentProcess' component={PaymentProcess}/>
       <Route path='/Time' component={Time}/>
       <Route path='/Instructions' component={Instructions}/>
+      <Route path='/Test' component={Test}/>
     </Switch>
   </div>
 
