@@ -9,9 +9,9 @@ export default class Register extends Component {
     constructor(){
         super()
         this.state= {
-            firstname: '',
+            firstName: '',
             middlename :'',
-            lastname :'',
+            lastName :'',
             email: '',
             phoneNumber: '',
             county: '',
@@ -25,9 +25,9 @@ export default class Register extends Component {
     onSubmit = (event) => {
         event.preventDefault()
         const {
-            firstname,
+            firstName,
             middlename,
-            lastname,
+            lastName,
             email,
             phoneNumber,
             county,
@@ -36,26 +36,26 @@ export default class Register extends Component {
             areaOfStudy
         }= this.state
         
-        const newStudent = {
-            firstname,
-            middlename,
-            lastname,
-            email,
-            phoneNumber,
-            county,
-            password,
-            cpassword,
-            areaOfStudy
-        }
-        console.log(newStudent)
+        // const newStudent = {
+        //     firstName,
+        //     middlename,
+        //     lastName,
+        //     email,
+        //     phoneNumber,
+        //     county,
+        //     password,
+        //     cpassword,
+        //     areaOfStudy
+        // }
+        // console.log(newStudent)
 
         auth.createUserWithEmailAndPassword(email, password)
             .then(user => {
 
                 const newStudent = {
-                    firstname,
+                    firstName,
                     middlename,
-                    lastname,
+                    lastName,
                     email,
                     phoneNumber,
                     county,
@@ -85,7 +85,7 @@ export default class Register extends Component {
     }
 
     render() {
-        const { password, cpassword, firstname, email} = this.state;
+        const { password, cpassword, firstName, email} = this.state;
         const isInvalid =
         password !== cpassword ||
         password === '';
@@ -107,10 +107,10 @@ export default class Register extends Component {
                         <div className='form-group' >
                         First name:
                         <input 
-                        onChange = {event =>this.setState(propertyName('firstname',event.target.value))}
-                        value={this.state.firstname}
+                        onChange = {event =>this.setState(propertyName('firstName',event.target.value))}
+                        value={firstName}
                         className='form-control' 
-                        type="text" name="firstname"/>
+                        type="text" name="firstName"/>
                         </div>
                         
                         <div className='form-group' >
@@ -124,17 +124,17 @@ export default class Register extends Component {
                         <div className='form-group' >
                         Last name:
                         <input 
-                        onChange = {event =>this.setState(propertyName('lastname',event.target.value))}
-                        value={this.state.lastname}
-                        className='form-control' type="text" name="lastname"/>
+                        onChange = {event =>this.setState(propertyName('lastName',event.target.value))}
+                        value={this.state.lastName}
+                        className='form-control' type="text" name="lastName"/>
                         </div>
 
                         <div className='form-group' >
-                        Email:
+                        EmailAddress:
                         <input 
                         onChange = {event =>this.setState(propertyName('email',event.target.value))}
                         value={this.state.email}
-                        className='form-control' type="text" name="email"/>
+                        className='form-control' type="text" name="emailAddress"/>
                         </div>
 
                         <div className='form-group' >
