@@ -66,7 +66,7 @@ export default class Register extends Component {
                 }
 
                 const userId=user.uid;
-                fetch('https://cu-app.herokuapp.com/api/v1/students', {
+                fetch('https://cuappapi.herokuapp.com/api/v1/students', {
                     method: 'POST',
                     headers: {
                         "Content-Type": 'application/json'
