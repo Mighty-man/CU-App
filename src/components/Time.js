@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Bank from '../assets/UBA.gif';
 import Bank2 from '../assets/download.jpeg';
+import Navbar from '../components/Navbar';
 
 
 export default class Test9 extends Component {
     render() {
         return (
-            
+            <div>
+            <Navbar/>
         < div style={styles.page} className= 'reg'>
                 <h1 className='head' style={ styles.header} >Welcome To Cuttington University Entrance Registration Portal</h1>
     
@@ -30,6 +32,7 @@ export default class Test9 extends Component {
 
 
               </ div>
+              </div>
               
                                       
               

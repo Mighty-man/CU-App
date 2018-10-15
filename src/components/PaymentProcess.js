@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Bank from '../assets/UBA.gif';
 import Bank2 from '../assets/download.jpeg';
+import Navbar from '../components/Navbar';
 
 export default class PaymentProcess extends Component {
     render() {

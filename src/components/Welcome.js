@@ -1,21 +1,33 @@
 import React, { Component } from 'react';
 import Bank from '../assets/UBA.gif';
 import Bank2 from '../assets/download.jpeg';
-
+import Navbar from '../components/Navbar';
 
 export default class Test9 extends Component {
+  constructor(){
+    super()
+    this.state={
+      isFileUploaded: false
+    }
+  }
     render() {
         return (
-            
+           <div>
+        <Navbar/>
         < div style={styles.page} className= 'reg'>
-                <h1 className='head' style={ styles.header} >Welcome To Cuttington University Entrance Registration Portal</h1>
+        <div style={styles.jambo} class="jumbotron">
+          <h4 class="display-4">Welcome To Cuttington University Entrance Registration Portal</h4>
+        
+        </div>
+                <h1 className='head' style={ styles.header} ></h1>
 
 
                 <div class="row">
                 <div class="col-sm-3">
-                  <div class="card">
+                  <div style ={styles.card} class="card">
+
                     <div class="card-body">
-                      <h5 class="card-title">Step 1</h5>
+                      <h5 style={styles.cardTitle} class="card-title">Step 1</h5>
                       <div class="card-body">
                             <h4 class="card-text">Bank payment</h4>
                             <p class="card-text">All payments are to be made at the Bank in your area.</p>
@@ -27,9 +39,9 @@ export default class Test9 extends Component {
               
                 </div>
                 <div class="col-sm-3">
-                  <div class="card">
+                  <div style ={styles.card} class="card">
                     <div class="card-body">
-                    <h4 class="card-title">Choose your Bank step 2</h4>
+                    <h5 style={styles.cardTitle} class="card-title">Step 2</h5>
                             <p class="card-text">Cuttington University Deals With Two Major Banking System. </p>
                             <p>UBA Bank account: 53070030000266</p>
                             <img src={Bank} style={{width: "10rem"}}/>
@@ -39,10 +51,10 @@ export default class Test9 extends Component {
                   </div>
                 </div>
 
-                <div class="col-sm-3">
-                  <div class="card">
+                <div  class="col-sm-3">
+                  <div style ={styles.card} class="card">
                     <div class="card-body">
-                    <h3>step 3</h3>
+                    <h5 style={styles.cardTitle} className= 'card-title'>Step 3</h5>
                     <p class="card-title">Obtain Cuttington University Official Reciept</p>
                             <p class="card-text">After Payment to bank, Please take the Bank slip to the 
                             Finance office on the Main campus to obtain the CU official Reciept.</p>
@@ -51,15 +63,19 @@ export default class Test9 extends Component {
                 </div>
 
                 <div class="col-sm-3">
-                  <div class="card">
+                  <div style ={styles.card} class="card">
                     <div class="card-body">
-                    <h3>step 4</h3>
+                    <h5 style={styles.cardTitle} className= 'card-title'>Step 4</h5>
                     <p class="card-title">Return to the Portal!!</p>
                             <p class="card-text">After you obtain the official Cuttington University Reciept,
                              you will need to scan the copy of the Reciept to the Upload section on this page</p>
 
-                             <button type="button" class="btn btn-success" style={{
+                             <button type="button" class="btn btn-primary" style={{
+                            width:'100%',}}>Upload Reciept </button>
+                            { this.state.isFileUploaded ? 
+                            <button type="button" class="btn btn-success" style={{
                             width:'100%',}}>Next Page </button> 
+                            : null }
                     </div>
                   </div>
                 </div>
@@ -67,6 +83,8 @@ export default class Test9 extends Component {
 
 
               </ div>
+
+              </div> 
               
                                       
               
@@ -82,13 +100,30 @@ export default class Test9 extends Component {
 const styles ={
     page: {
         backgroundColor: 'rgba(40,24,140,0.9)',
-        padding: 200,
+        paddingLeft: 50,
+        paddingRight: 50,
+        paddingBottom: 100,
         
     },
     header: {
         color: 'gold'
         
+    },
+    jambo: {
+      backgroundColor: 'rgba(255,255,255,0.3)',
+      color: 'white',
+      textAlign: 'center',
+      
+    },
+    card : {
+      color: 'white',
+      backgroundColor: 'rgba(255,255,255,0.3)',
+
+    },
+    cardTitle : {
+      color : 'gold',
     }
+
 }
 
 

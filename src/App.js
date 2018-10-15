@@ -23,6 +23,7 @@ class App extends Component{
       <Route path='/Time' component={Time}/>
       <Route path='/Instructions' component={Instructions}/>
       <Route path='/Test' component={Test}/>
+      
     </Switch>
   </div>
 
