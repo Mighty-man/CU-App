@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import {auth} from '../firebase'
+import {Link, withRouter} from 'react-router-dom';
 
 const propertyName=(propertyName, value) => ({
 [propertyName]:value
 })
 
-export default class Register extends Component {
-    constructor(){
-        super()
+ class Register extends Component {
+    constructor(props){
+        super(props)
         this.state= {
             firstName: '',
             middlename :'',
@@ -82,6 +83,8 @@ export default class Register extends Component {
             throw console.error('passwords do not match');
             
         }
+        this.props.history.push('/')
+        console.log('my props',this.props)
     }
 
     render() {
@@ -189,6 +192,8 @@ export default class Register extends Component {
         );
     }
 }
+
+export default withRouter(Register)
 
 const styles ={
     page: {
