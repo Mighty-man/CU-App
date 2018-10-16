@@ -3,8 +3,9 @@ import ReactFilestack, { client } from 'filestack-react';
 import Bank from '../assets/UBA.gif';
 import Bank2 from '../assets/download.jpeg';
 import Navbar from '../components/Navbar';
+import {Link, withRouter} from 'react-router-dom';
 
-export default class Test9 extends Component {
+ class Welcome extends Component {
   constructor(){
     super()
     this.state={
@@ -98,8 +99,8 @@ export default class Test9 extends Component {
                              {/* <button type="button" class="btn btn-primary" style={{
                             width:'100%',}}>Upload Reciept </button> */}
                             { this.state.isFileUploaded ? 
-                            <button type="button" class="btn btn-success" style={{
-                            width:'100%',}}>Next Page </button> 
+                            <Link to='/Time' class="btn btn-success" style={{
+                            width:'100%',}}>Next Page </Link> 
                             : null }
                     </div>
                   </div>
@@ -121,6 +122,7 @@ export default class Test9 extends Component {
         );
     }
 }
+export default withRouter(Welcome)
 
 const styles ={
     page: {
