@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactFilestack, { client } from 'filestack-react';
 import Bank from '../assets/UBA.gif';
 import Bank2 from '../assets/download.jpeg';
 import Navbar from '../components/Navbar';
@@ -7,7 +8,9 @@ export default class Test9 extends Component {
   constructor(){
     super()
     this.state={
-      isFileUploaded: false
+      isFileUploaded: false,
+      image:'',
+
     }
   }
     render() {
@@ -23,14 +26,20 @@ export default class Test9 extends Component {
 
 
                 <div class="row">
-                <div class="col-sm-3">
+                <div class="col-md-3">
                   <div style ={styles.card} class="card">
 
                     <div class="card-body">
                       <h5 style={styles.cardTitle} class="card-title">Step 1</h5>
                       <div class="card-body">
-                            <h4 class="card-text">Bank payment</h4>
+                            <h5 class="card-text">Bank payment</h5>
                             <p class="card-text">All payments are to be made at the Bank in your area.</p>
+                            <h6 class="card-title">Undergraduate program</h6>
+                                <p class="card-text">USD $ 35</p>
+                                <h6 class="card-title">Graduate program</h6>
+                                <p class="card-text">USD $ 100</p>
+                                <h6 class="card-title">Assiociate program</h6>
+                                <p class="card-text">USD $ 25</p>
                         </div>
                     </div>
                   </div>
@@ -38,7 +47,7 @@ export default class Test9 extends Component {
                   <br/>
               
                 </div>
-                <div class="col-sm-3">
+                <div class="col-md-3">
                   <div style ={styles.card} class="card">
                     <div class="card-body">
                     <h5 style={styles.cardTitle} class="card-title">Step 2</h5>
@@ -51,7 +60,7 @@ export default class Test9 extends Component {
                   </div>
                 </div>
 
-                <div  class="col-sm-3">
+                <div  class="col-md-3">
                   <div style ={styles.card} class="card">
                     <div class="card-body">
                     <h5 style={styles.cardTitle} className= 'card-title'>Step 3</h5>
@@ -62,7 +71,7 @@ export default class Test9 extends Component {
                   </div>
                 </div>
 
-                <div class="col-sm-3">
+                <div class="col-md-3">
                   <div style ={styles.card} class="card">
                     <div class="card-body">
                     <h5 style={styles.cardTitle} className= 'card-title'>Step 4</h5>
@@ -70,8 +79,24 @@ export default class Test9 extends Component {
                             <p class="card-text">After you obtain the official Cuttington University Reciept,
                              you will need to scan the copy of the Reciept to the Upload section on this page</p>
 
-                             <button type="button" class="btn btn-primary" style={{
-                            width:'100%',}}>Upload Reciept </button>
+                            { this.state.isFileUploaded ? null :
+                             <ReactFilestack
+                             apikey='AKYue80jkT7eK0k41Jq1oz'
+                             buttonText="Upload Reciept"
+                             buttonClass="btn btn-primary btn-block"
+                             onSuccess={(res)=>{
+                                console.log(res)
+                                this.setState({
+                                  image: res.filesUploaded[0].url,
+                                  isFileUploaded: true
+                                })
+                             }}
+                             onError={ e => console.log(e)}
+                             
+                             />
+                            }
+                             {/* <button type="button" class="btn btn-primary" style={{
+                            width:'100%',}}>Upload Reciept </button> */}
                             { this.state.isFileUploaded ? 
                             <button type="button" class="btn btn-success" style={{
                             width:'100%',}}>Next Page </button> 

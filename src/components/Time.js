@@ -10,17 +10,21 @@ export default class Test9 extends Component {
             <div>
             <Navbar/>
         < div style={styles.page} className= 'reg'>
-                <h1 className='head' style={ styles.header} >Welcome To Cuttington University Entrance Registration Portal</h1>
+             
     
 
                 <div class="row">
                 <div class="col-sm-12">
-                  <div class="card">
+                  <div style={{
+                      maxWidth: 400,
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                }} class="card">
                     <div class="card-body">
                       <h5 class="card-title">Schedule for entrance exam </h5>
                       <div class="card-body">
-                      <button type="button" class="btn btn-success" style={{
-                            width:'100%',}}>Schedule </button> 
+                      <a href='https://cuentranceexam.setmore.com/' target='_blank' type="button" class="btn btn-success" style={{
+                            width:'100%',}}>Schedule </a> 
                         </div>
                     </div>
                   </div>
@@ -48,7 +52,8 @@ export default class Test9 extends Component {
 const styles ={
     page: {
         backgroundColor: 'rgba(40,24,140,0.9)',
-        padding: 200,
+        height:'100vh',
+        paddingTop: 100,
         
     },
     header: {

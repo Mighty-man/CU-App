@@ -48,7 +48,8 @@ export default class SignIn extends Component {
                               type='password'/>
                         </div>
                         <input style={{width: '100%'}} className= 'btn btn-primary' type= 'submit'/>
-                    </form>
+                        <p>Don't have an account? <a  href='#'>Register Now></a></p>
+                        </form>
                    
                 </div>
                 </div>
