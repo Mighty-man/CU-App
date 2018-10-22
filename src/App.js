@@ -8,20 +8,56 @@ import PaymentProcess from './components/PaymentProcess';
 import Time from './components/Time';
 import Instructions from './components/Instructions';
 import Test from './components/Test';
+import PrivateRoute from './components/PrivateRoute';
+import {auth} from './firebase';
 
 
 
 class App extends Component{
+  state ={
+    loading: true,
+    authenticated: false,
+    user: null,
+    currentUser: null
+  }
+
+  authListener = () =>{
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({
+          authenticated: true,
+          currentUser: user,
+          loading: false
+        });
+        console.log(user);
+      } else {
+        this.setState({
+          authenticated: false,
+          currentUser: null,
+          loading: false
+        })
+      }
+    })
+  }
+
+  
+
+  componentWillMount(){
+    this.authListener();
+  }
+
+
   render() {
+    const { authenticated, loading, user } = this.state;
     return(
       <div>
     <Switch>
-      <Route exact path='/' component={Welcome}/>
-      <Route path='/Register' component={Register}/>
-      <Route path='/SignIn' component={SignIn}/>
-      <Route path='/PaymentProcess' component={PaymentProcess}/>
-      <Route path='/Time' component={Time}/>
-      <Route path='/Instructions' component={Instructions}/>
+      <Route exact path='/' component={SignIn}/>
+      <PrivateRoute authenticated={authenticated} path='/Register' component={Register}/>
+      <PrivateRoute authenticated={authenticated} path='/Welcome' component={Welcome}/>
+      <PrivateRoute authenticated={authenticated} path='/PaymentProcess' component={PaymentProcess}/>
+      <PrivateRoute authenticated={authenticated} path='/Time' component={Time}/>
+      <PrivateRoute authenticated={authenticated} path='/Instructions' component={Instructions}/>
       <Route path='/Test' component={Test}/>
       
     </Switch>
