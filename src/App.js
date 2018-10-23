@@ -8,7 +8,8 @@ import PaymentProcess from './components/PaymentProcess';
 import Time from './components/Time';
 import Instructions from './components/Instructions';
 import Test from './components/Test';
-import PrivateRoute from './components/PrivateRoute';
+import {PrivateRoute,PublicRoute} from './components/PrivateRoute';
+import Loading from './components/Loading';
 import {auth} from './firebase';
 
 
@@ -48,20 +49,24 @@ class App extends Component{
 
 
   render() {
-    const { authenticated, loading, user } = this.state;
+    const { authenticated, loading, currentUser } = this.state;
     console.log(this.state)
+
+    if(loading){
+      return <Loading />
+    }
     
     return(
       <div>
     <Switch>
-      <Route exact path='/' component={SignIn}/>
-      <Route exact path='/signin' component={SignIn}/>
-      <Route exact path='/Register' component={Register}/>
-      <PrivateRoute authenticated={authenticated} exact path='/Welcome' component={() => <Welcome />}/>
+      {/* <Route exact path='/' component={SignIn}/> */}
+      <PublicRoute authenticated={authenticated} exact path='/signin' component={SignIn}/>
+      <PublicRoute authenticated={authenticated} exact path='/Register' component={Register}/>
+      <PrivateRoute authenticated={authenticated} exact path='/' component={() => <Welcome currentUser={currentUser} />}/>
       <PrivateRoute authenticated={authenticated} exact path='/PaymentProcess' component={PaymentProcess}/>
       <PrivateRoute authenticated={authenticated} exact path='/Time' component={Time}/>
       <PrivateRoute authenticated={authenticated} exact path='/Instructions' component={Instructions}/>
-      {/* <Route path='/Test' component={Test}/> */}
+      <Route path='*' component={SignIn}/>
       
     </Switch>
   </div>

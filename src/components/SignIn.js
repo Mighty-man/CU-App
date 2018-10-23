@@ -29,7 +29,7 @@ export default class SignIn extends Component {
         return (
            
             <div>
-                 <Navbar/>
+                 {/* <Navbar/> */}
             <div style={styles.page}>
                 <div class="card border-primary mb-3" style={{maxWidth: "20rem", marginLeft: 'auto',marginRight: 'auto'}}>
                 <div class="card-header"><h3>Sign In</h3></div>

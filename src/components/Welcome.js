@@ -6,8 +6,8 @@ import Navbar from '../components/Navbar';
 import {Link, withRouter} from 'react-router-dom';
 
  class Welcome extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state={
       isFileUploaded: false,
       image:'',
@@ -86,11 +86,25 @@ import {Link, withRouter} from 'react-router-dom';
                              buttonText="Upload Reciept"
                              buttonClass="btn btn-primary btn-block"
                              onSuccess={(res)=>{
+                               let userEmail = this.props.currentUser.email;
+                               let bankReceipt = {
+                                 email: userEmail,
+                                 image: res.filesUploaded[0].url
+                               }
                                 console.log(res)
                                 this.setState({
                                   image: res.filesUploaded[0].url,
                                   isFileUploaded: true
+                                });
+
+                                fetch('https://cu-app.herokuapp.com/api/v1/receipts', {
+                                  method: 'POST',
+                                  header: {
+                                    "Content-Type": "application/json"
+                                  },
+                                  body: JSON.stringify(bankReceipt)
                                 })
+                                .then( res => res.json())
                              }}
                              onError={ e => console.log(e)}
                              

@@ -18,11 +18,9 @@ export default class Navbar extends Component {
     <span className="navbar-toggler-icon"></span>
   </button>
 
-  <div style={{justifyContent: 'right'}} className=" collapse navbar-collapse" id="navbarColor03">
       
-      <button onClick={this.signOut} className="btn btn-primary my-2 my-sm-0" type="submit">Log Out</button>
+      <button style={{ color: 'black'}} onClick={this.signOut} className="btn btn-primary my-2 my-sm-0" type="submit" >Log Out</button>
     
-  </div>
   </div>
 </nav>
 
