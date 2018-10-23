@@ -49,16 +49,19 @@ class App extends Component{
 
   render() {
     const { authenticated, loading, user } = this.state;
+    console.log(this.state)
+    
     return(
       <div>
     <Switch>
       <Route exact path='/' component={SignIn}/>
-      <PrivateRoute authenticated={authenticated} path='/Register' component={Register}/>
-      <PrivateRoute authenticated={authenticated} path='/Welcome' component={Welcome}/>
-      <PrivateRoute authenticated={authenticated} path='/PaymentProcess' component={PaymentProcess}/>
-      <PrivateRoute authenticated={authenticated} path='/Time' component={Time}/>
-      <PrivateRoute authenticated={authenticated} path='/Instructions' component={Instructions}/>
-      <Route path='/Test' component={Test}/>
+      <Route exact path='/signin' component={SignIn}/>
+      <Route exact path='/Register' component={Register}/>
+      <PrivateRoute authenticated={authenticated} exact path='/Welcome' component={() => <Welcome />}/>
+      <PrivateRoute authenticated={authenticated} exact path='/PaymentProcess' component={PaymentProcess}/>
+      <PrivateRoute authenticated={authenticated} exact path='/Time' component={Time}/>
+      <PrivateRoute authenticated={authenticated} exact path='/Instructions' component={Instructions}/>
+      {/* <Route path='/Test' component={Test}/> */}
       
     </Switch>
   </div>

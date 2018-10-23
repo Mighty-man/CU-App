@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import {auth} from '../firebase';
 
 export default class Navbar extends Component {
+
+    signOut= ()=>{
+        auth.signOut()
+    }
+
     render() {
         return (
             <div>
@@ -14,7 +20,7 @@ export default class Navbar extends Component {
 
   <div style={{justifyContent: 'right'}} className=" collapse navbar-collapse" id="navbarColor03">
       
-      <button className="btn btn-primary my-2 my-sm-0" type="submit">Log Out</button>
+      <button onClick={this.signOut} className="btn btn-primary my-2 my-sm-0" type="submit">Log Out</button>
     
   </div>
   </div>
