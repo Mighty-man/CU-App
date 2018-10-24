@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {auth} from '../firebase';
-import Navbar from '../components/Navbar';
+import {Navbar, NavbarPublic} from '../components/Navbar';
 import {Link} from 'react-router-dom';
 
 const propertyName=(propertyName, value) => ({
@@ -29,7 +29,7 @@ export default class SignIn extends Component {
         return (
            
             <div>
-                 {/* <Navbar/> */}
+                 <NavbarPublic/>
             <div style={styles.page}>
                 <div class="card border-primary mb-3" style={{maxWidth: "20rem", marginLeft: 'auto',marginRight: 'auto'}}>
                 <div class="card-header"><h3>Sign In</h3></div>

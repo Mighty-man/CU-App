@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactFilestack, { client } from 'filestack-react';
 import Bank from '../assets/UBA.gif';
 import Bank2 from '../assets/download.jpeg';
-import Navbar from '../components/Navbar';
+import {Navbar} from '../components/Navbar';
 import {Link, withRouter} from 'react-router-dom';
 
  class Welcome extends Component {
